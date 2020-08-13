@@ -11,7 +11,7 @@ const connectDatabase = require('./config/connection');
 const PORT = 3000;
 
 
-// app.use(express.static('public/assets'));
+app.use(express.static(__dirname + 'public'));
 app.use(express.json());
 
 
@@ -19,12 +19,14 @@ app.use(express.json());
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-// layoutsDir: __dirname + './views'
 //Routes
 
 app.get('/', function(req,res) {
-    res.render('burgers', {layout: false});
-})
+    res.render('index', {layout: false}, );
+});
+
+
+
 
 app.listen(PORT, function() {
     console.log("Server running on port " + PORT );
