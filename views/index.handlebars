@@ -1,20 +1,46 @@
 <div class="container">
-    <div class="jumbotron">
-        <img src="/public/images/burger.png" width="auto" height="auto">
-        <h1>¿Queires Comes?</h1>
-    </div>
+	<div class="row">
+		<div class="col-md-12 text-center" id="top-bar">
+            <div  style ="background-image: url('burger.png');"></div>
+			<h1> COME LA HAMBURGUESA </h1>
+		</div>
+		<div class="col-md-6 text-center" class="task">
+			<div class="row">
+				{{#each hamburguesa}}
+				{{#unless this.come}}
+				<div class="col-md-9 text-center">
+					<pre>{{this.id}}. {{this.name}}
+					</pre>
+				</div>
+				<div class="col-md-3 text-center">
+					<form class="come-form button-size">
+						<input   type="hidden" class="burger_id" type="text" value={{this.id}}><br>
+						<button type="submit" class="btn btn-default">Come!</button>
+					</form>
+				</div>
+				{{/unless}}
+				{{/each}}
+			</div>
+		</div>
+		<div class="col-md-6 text-center" class="task">
+			{{#each hamburguesa}}
+			{{#if this.come}}
+			<input class="form-control" type="text" placeholder="{{this.id}} . {{this.name}}" readonly>
+			{{/if}}
+			{{/each}}
+		</div>
+	</div>
 </div>
 
 <div class="container">
-
-
-<h2>Yo quiero comer!</h2>
-       <ul>
-            {{#each hamburguesa}}
-                {{#unless come}}
-                    <button class= "come" data-id = "{{id}}" type="button"></button>
-                {{/unless}}
-            {{/each}}
-       </ul>
+	<div class="row">
+		<div class="col-md-12 text-center enter_section">
+			<form action="burgers/create" method="POST">
+				<input type="text" class="form-control" name="name" value="" id="enter_text">
+				<button type="submit" class="btn btn-primary" id="text-enter-button">Yo Querio</button>
+			</form>
+			<p>Enter a burger you want to eat Click the "Yo Querio" button.</p>
+		</div>
+	</div>
 </div>
 

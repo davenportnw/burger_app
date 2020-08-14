@@ -39,25 +39,26 @@ const orm = {
         //grab info from database
         connection.query(queryString, function(err, result) {
             if(err) throw err;
+            cb(result);
         })
-        cb(result);
     },
-//Insert One
-    insert: function(table, cols, vals, cb) {
+//create entry
+    create: function(table, cols, vals, cb) {
         let queryString = "INSERT INTO " + table;
 
-        queryString += '(';
+        queryString += " (";
         queryString += cols.toString();
-        queryString += ') ';
-        queryString += 'VALUES (';
-        queryString += `'${vals.toString()}`;
-        queryString += ');';
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += `${vals.toString()}`;
+        queryString += "); ";
 
         connection.query(queryString, vals, function( err, result) {
             if (err) throw err;
             cb(result);
         })
     },
+
 //update entry
     update: function(table, objColVals, condition, cb) {
         let queryString = 'UPDATE' + table;
@@ -87,3 +88,4 @@ const orm = {
 
 }
 
+module.exports = orm;

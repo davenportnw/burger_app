@@ -8,18 +8,24 @@ const burger = {
         });
     },
 
-    insert: function (cols, vals, cb) {
-        orm.insert('hamburguesa',cols, vals, function(res) {
+    create: function (name, cb) {
+        orm.create('hamburguesa',["name", "come"], ['"' + name + '"',false], function(res) {
             cb(res);
         });
     },
 
-    update: function (objColVals, condition, cb) {
-        orm.update('hamburguesa', objColVals, condition, function(res) {
-            cb(res);
-        });
+    update: function (id, cb) {
+        const condition = "id = " + id;
+        orm.update(
+            'hamburguesa', 
+            {
+                come: true,
+            },
+            condition,
+            cb
+            );
     }
 };
 
 // Export the database functions for the controller.
-module.exports = burgers;
+module.exports = burger;
