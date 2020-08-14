@@ -10,22 +10,22 @@ const connectDatabase = require('./config/connection');
 // var PORT = process.env.PORT || 8080;
 const PORT = 3000;
 
-
-app.use(express.static(__dirname + 'public'));
+//Parse request body as JSON
+app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
+
+//Server static conent for the app from the "public" directory in the app directory
+app.use(express.static(__dirname + 'public'));
+
 
 
 //Connect Handlebars 
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-//Routes
-
-app.get('/', function(req,res) {
-    res.render('index', {layout: false}, );
-});
-
-
+//Import Routes
+const routes = require("./controllers/burgerController");
+app.use(routes);
 
 
 app.listen(PORT, function() {
