@@ -1,7 +1,6 @@
-// const burger = require("../../models/burgers");
 
 $(document).ready(function() { 
-    $(".come-form").on("submit", function(event) {
+    $(".come-form").on("click", function(event) {
         event.preventDefault();
         //Grab from object and turn into string
         let burger_id = $(this).children(".burger_id").val();

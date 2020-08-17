@@ -15,7 +15,8 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
 //Server static conent for the app from the "public" directory in the app directory
-app.use(express.static(__dirname + 'public'));
+// app.use(express.static(__dirname + 'public'));
+app.use("/public", express.static('./public/'));
 
 
 
