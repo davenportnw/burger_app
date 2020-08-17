@@ -15,21 +15,26 @@ router.get("/burgers", function (req, res) {
         let hbsObject = {
             hamburguesa: data
         };
-        console.log("hbsObject", hbsObject);
+        // console.log("hbsObject", hbsObject);
         res.render('index', hbsObject);
     });
 });
 
 router.post("/burgers/create", function(req, res) {
     burgers.create(req.body.name, function(result) {
-        console.log("result", result);
+        // console.log("result", result);
         res.redirect("/burgers");
     });
 });
 
 router.put("/burgers/:id", function(req, res) {
-    // const condition = "id = " + req.params.id;
-    // console.log("condition", condition);
+    const condition = "id = " + req.params.id;
+    console.log("condition", condition);
+
+    burgers.update(req.params.id, function(result) {
+        console.log('result', result);
+        res.sendStatus(200);
+    })
     // burgers.update(
     //     {
     //         come: req.body.come
@@ -42,10 +47,6 @@ router.put("/burgers/:id", function(req, res) {
     //         res.status(200).end();
     //     }
     // );
-    burgers.update(req.params.id, function(result) {
-        console.log('result', result);
-        res.sendStatus(200);s
-    })
 });
 
 

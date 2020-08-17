@@ -61,9 +61,9 @@ const orm = {
 
 //update entry
     update: function(table, objColVals, condition, cb) {
-        let queryString = 'UPDATE' + table;
+        let queryString = 'UPDATE ' + table;
 
-        queryString += 'SET';
+        queryString += ' SET ';
         queryString += objToSql(objColVals);
         queryString += ' WHERE ';
         queryString += condition;
@@ -73,18 +73,6 @@ const orm = {
             cb(result);
         });
     },
-
-//delete entry
-    delete: function(table, condition, cb) {
-        let queryString = 'DELETE FROM' + table;
-        queryString += 'WHERE';
-        queryString += condition;
-    
-        connection.query(queryString, function(err, result) {
-            if(err) throw err;
-        })
-        cb(result);
-    }
 
 }
 
