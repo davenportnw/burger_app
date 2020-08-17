@@ -1,9 +1,14 @@
-/* body {
-    width: 99%;
-    height: 900px;
+.container {
+      width: 99%;
+      height: 900px;
     background-color: #fc6;
-  }
-  
+}
+body {
+width: 99%;
+height: 900px;
+background-color: #fc6;
+
+}
   #top-bar {
     margin-top: 28px;
   }
@@ -15,10 +20,20 @@
   }
   
   .list-reset {
-    padding: 0;
-    margin: 0;
+    padding: -5;
+    margin: -5;
     list-style-type: none;
     border: 0;
+  }
+  .noEat {
+    border: black   2px;
+  }
+
+  h1 {
+    color: forestgreen;
+  }
+  .task {
+    border: gainsboro;
   }
   
   @media (min-width: 1200px) {
@@ -62,7 +77,3 @@
     margin-top: 10px;
     margin-bottom: 18px;
   }
-  
-  h1 {
-    color: #f30;
-  } */
